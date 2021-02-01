@@ -4,9 +4,11 @@
              x:Class="XamarinFormsNav.Pages.SelectorPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Item Selector!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Select Item" Command="{Binding SelectItemCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

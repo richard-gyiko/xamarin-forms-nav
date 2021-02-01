@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinFormsNav.ViewModel;
 
 namespace XamarinFormsNav.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectorPage : ContentPage
     {
-        public SelectorPage()
+        public SelectorPage(SelectorViewModel selectorViewModel)
         {
+            NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
+
             InitializeComponent();
+
+            BindingContext = selectorViewModel;
         }
     }
 }

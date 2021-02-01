@@ -1,9 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinFormsNav.Pages.TabsPage">
-  <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" />
-  <ContentPage Title="Tab 2" />
-  <ContentPage Title="Tab 3" />
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:controls="clr-namespace:XamarinFormsNav.Controls"
+            xmlns:local="clr-namespace:XamarinFormsNav.Pages"
+            xmlns:utility="clr-namespace:XamarinFormsNav.Utility"
+            xmlns:vm="clr-namespace:XamarinFormsNav.ViewModel"
+            x:Class="XamarinFormsNav.Pages.TabsPage"
+            ItemsSource="{Binding Tabs}"
+            SelectedItem="{Binding SelectedTab}">
+
+    <TabbedPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage Title="{Binding Title}">
+                <ContentPage.Resources>
+                    <ResourceDictionary>
+                        <utility:TypedDataTemplate x:Key="DashboardViewModelDataTemplate" TargetType="{x:Type vm:DashboardViewModel}">
+                            <DataTemplate>
+                                <local:DashboardPage/>
+                            </DataTemplate>
+                        </utility:TypedDataTemplate>
+                        <utility:TypedDataTemplate x:Key="SellViewModelDataTemplate" TargetType="{x:Type vm:SellViewModel}">
+                            <DataTemplate>
+                                <local:SellPage/>
+                            </DataTemplate>
+                        </utility:TypedDataTemplate>
+                    </ResourceDictionary>
+                </ContentPage.Resources>
+                <controls:ContentControl DataContext="{Binding}" />
+            </ContentPage>
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
 </TabbedPage>
